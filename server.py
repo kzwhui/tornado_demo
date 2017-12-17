@@ -13,7 +13,7 @@ from tornado.log import app_log
 define("port", default = 8888, help = "run on the given port", type = int)
 
 def main():
-    tornado.options.parse_config_file("./server.conf")
+    tornado.options.parse_config_file("./conf/server.conf")
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(options.port)
 
