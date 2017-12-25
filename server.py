@@ -10,17 +10,20 @@ from application import application
 from tornado.options import define, options
 from tornado.log import app_log
 
-define("port", default = 8888, help = "run on the given port", type = int)
+define("port", default=8888, help="run on the given port", type=int)
+
 
 def main():
     tornado.options.parse_config_file("./conf/server.conf")
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(options.port)
 
-    app_log.info("Development server is running at http://127.0.0.1:%s" % options.port)
+    app_log.info(
+        "Development server is running at http://127.0.0.1:%s" % options.port)
     app_log.info("Quit the server with Control-C")
 
     tornado.ioloop.IOLoop.instance().start()
+
 
 if __name__ == "__main__":
     main()
